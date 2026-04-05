@@ -24,7 +24,7 @@ public class ResizeImage
     }
 
     [Function("ResizeImage")]
-    public static async Task<IActionResult> Run(
+    public async Task<IActionResult> Run(
         [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = null)] HttpRequest req)
     {
         try
