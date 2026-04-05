@@ -1,0 +1,63 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TP", "TP\TP.csproj", "{463EA996-65A8-EBD8-9130-7EC3651EF25D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResizeFunction", "ResizeFunction\ResizeFunction.csproj", "{C83E1803-99C0-DC10-7E12-8D879F116117}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ResizeFunction (1)", "ResizeFunction (1)", "{9F773063-48DD-F418-DCB7-652B16639D51}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "obj", "obj", "{85612040-48B5-6B1B-5E55-BEFF452DB9AB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Debug", "Debug", "{28681EE7-D861-1CC9-0733-536C4C5A253F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "net8.0", "net8.0", "{FA951E74-8BF2-053F-ED84-96BEBBF8E737}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkerExtensions", "ResizeFunction\obj\Debug\net8.0\WorkerExtensions\WorkerExtensions.csproj", "{57CFFA49-9250-D803-8509-43089A06F5FE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Release", "Release", "{583B60B7-1D90-655F-020A-36DF2F957F64}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "net8.0", "net8.0", "{2A57BC2B-CCDD-AED7-85B9-BC7740251FCF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkerExtensions", "ResizeFunction\obj\Release\net8.0\WorkerExtensions\WorkerExtensions.csproj", "{A4118D39-1C38-A38D-5095-CAA2F1E3F7BC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{463EA996-65A8-EBD8-9130-7EC3651EF25D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{463EA996-65A8-EBD8-9130-7EC3651EF25D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{463EA996-65A8-EBD8-9130-7EC3651EF25D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{463EA996-65A8-EBD8-9130-7EC3651EF25D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C83E1803-99C0-DC10-7E12-8D879F116117}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C83E1803-99C0-DC10-7E12-8D879F116117}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C83E1803-99C0-DC10-7E12-8D879F116117}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C83E1803-99C0-DC10-7E12-8D879F116117}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57CFFA49-9250-D803-8509-43089A06F5FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57CFFA49-9250-D803-8509-43089A06F5FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57CFFA49-9250-D803-8509-43089A06F5FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57CFFA49-9250-D803-8509-43089A06F5FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4118D39-1C38-A38D-5095-CAA2F1E3F7BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4118D39-1C38-A38D-5095-CAA2F1E3F7BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4118D39-1C38-A38D-5095-CAA2F1E3F7BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4118D39-1C38-A38D-5095-CAA2F1E3F7BC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{85612040-48B5-6B1B-5E55-BEFF452DB9AB} = {9F773063-48DD-F418-DCB7-652B16639D51}
+		{28681EE7-D861-1CC9-0733-536C4C5A253F} = {85612040-48B5-6B1B-5E55-BEFF452DB9AB}
+		{FA951E74-8BF2-053F-ED84-96BEBBF8E737} = {28681EE7-D861-1CC9-0733-536C4C5A253F}
+		{57CFFA49-9250-D803-8509-43089A06F5FE} = {FA951E74-8BF2-053F-ED84-96BEBBF8E737}
+		{583B60B7-1D90-655F-020A-36DF2F957F64} = {85612040-48B5-6B1B-5E55-BEFF452DB9AB}
+		{2A57BC2B-CCDD-AED7-85B9-BC7740251FCF} = {583B60B7-1D90-655F-020A-36DF2F957F64}
+		{A4118D39-1C38-A38D-5095-CAA2F1E3F7BC} = {2A57BC2B-CCDD-AED7-85B9-BC7740251FCF}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {63C6EBBB-7281-4466-BED2-7F6F1AC1637F}
+	EndGlobalSection
+EndGlobal

@@ -24,7 +24,7 @@ public class ResizeImage
     }
 
     [Function("ResizeImage")]
-    public IActionResult Run(
+    public static async Task<IActionResult> Run(
         [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = null)] HttpRequest req)
     {
         try
@@ -32,7 +32,7 @@ public class ResizeImage
             _logger.LogInformation("Resize image function triggered");
 
             // Valide que le corps de la requête n'est pas vide
-            if (req.ContentLength == 0 || req.Body.Length == 0)
+            if (req.ContentLength == 0 || req.ContentLength == 0)
             {
                 _logger.LogWarning("Empty request body");
                 return new BadRequestObjectResult("Le corps de la requête ne doit pas être vide.");
@@ -76,7 +76,7 @@ public class ResizeImage
             using (var msInput = new MemoryStream())
             {
                 // Copie le corps de la requête en mémoire
-                req.Body.CopyTo(msInput);
+                await req.Body.CopyToAsync(msInput);
                 msInput.Position = 0;
 
                 try
