@@ -10,13 +10,11 @@ namespace Julien.Function;
 public class ResizeImage
 {
     private readonly ILogger<ResizeImage> _logger;
-    
-    // Limites raisonnables pour éviter les abus
     private const int MaxWidth = 4000;
     private const int MaxHeight = 4000;
     private const int MinWidth = 1;
     private const int MinHeight = 1;
-    private const long MaxUploadSizeBytes = 50 * 1024 * 1024; // 50 MB
+    private const long MaxUploadSizeBytes = 50 * 1024 * 1024;
 
     public ResizeImage(ILogger<ResizeImage> logger)
     {
@@ -25,20 +23,18 @@ public class ResizeImage
 
     [Function("ResizeImage")]
     public async Task<IActionResult> Run(
-        [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = null)] HttpRequest req)
+        [HttpTrigger(AuthorizationLevel.Function, "post", Route = null)] HttpRequest req)
     {
         try
         {
             _logger.LogInformation("Resize image function triggered");
 
-            // Valide que le corps de la requête n'est pas vide
             if (req.ContentLength == 0 || req.ContentLength == 0)
             {
                 _logger.LogWarning("Empty request body");
                 return new BadRequestObjectResult("Le corps de la requête ne doit pas être vide.");
             }
 
-            // Vérifie la taille maximale
             if (req.ContentLength > MaxUploadSizeBytes)
             {
                 _logger.LogWarning($"Request body too large: {req.ContentLength} bytes");
@@ -46,7 +42,6 @@ public class ResizeImage
                     $"La taille du fichier dépasse {MaxUploadSizeBytes / (1024 * 1024)} MB.");
             }
 
-            // Récupère et valide les paramètres w et h
             if (!req.Query.TryGetValue("w", out var wValue) || 
                 !int.TryParse(wValue.ToString(), out int width))
             {
@@ -61,7 +56,6 @@ public class ResizeImage
                 return new BadRequestObjectResult("Le paramètre 'h' (hauteur) est obligatoire et doit être un entier.");
             }
 
-            // Valide les dimensions
             if (width < MinWidth || height < MinHeight || width > MaxWidth || height > MaxHeight)
             {
                 _logger.LogWarning($"Invalid dimensions: w={width}, h={height}");
@@ -71,25 +65,24 @@ public class ResizeImage
 
             _logger.LogInformation($"Resizing image to {width}x{height}");
 
-            // Charge et redimensionne l'image
             byte[] targetImageBytes;
             using (var msInput = new MemoryStream())
             {
-                // Copie le corps de la requête en mémoire
+                // Récupère le corps du message en mémoire
                 await req.Body.CopyToAsync(msInput);
                 msInput.Position = 0;
 
                 try
                 {
-                    // Charge l'image depuis le stream
+                    // Charge l'image 
                     using (var image = Image.Load(msInput))
                     {
                         _logger.LogInformation($"Original image size: {image.Width}x{image.Height}");
 
-                        // Effectue le redimensionnement
+                        // Effectue la transformation
                         image.Mutate(x => x.Resize(width, height));
 
-                        // Sauvegarde en mémoire au format JPEG
+                        // Sauvegarde en mémoire 
                         using (var msOutput = new MemoryStream())
                         {
                             image.SaveAsJpeg(msOutput);
@@ -111,7 +104,7 @@ public class ResizeImage
 
             _logger.LogInformation($"Resized image size: {targetImageBytes.Length} bytes");
 
-            // Renvoie l'image redimensionnée avec le bon content-type
+            // Renvoie le contenu avec le content-type correspondant à une image jpeg
             return new FileContentResult(targetImageBytes, "image/jpeg")
             {
                 FileDownloadName = "resized.jpeg"
